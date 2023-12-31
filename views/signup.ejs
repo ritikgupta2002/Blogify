@@ -1,0 +1,89 @@
+<!-- signup.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head.ejs") %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Add additional stylesheets if needed -->
+  <style>
+    body {
+      background-color: #f0f5f9;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 50px;
+      max-width: 400px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #3f4d63;
+    }
+
+    input {
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      transition: border-color 0.3s ease-in-out;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+
+    input:focus {
+      border-color: #007bff;
+    }
+
+    button {
+      background-color: #8cc84b; /* Light green color */
+      border-color: #8cc84b;
+      color: #ffffff;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #72a43b; /* Darker green color on hover */
+      border-color: #72a43b;
+    }
+
+    /* Custom style for autocomplete dropdown */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  </style>
+</head>
+<body>
+  <%- include("partials/nav.ejs") %>
+  <div class="container">
+    <h2 class="text-center mb-4">Signup here !</h2>
+    <form action="/user/signup" method="post">
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Your Name</label>
+        <input type="text" name="fullName" class="form-control" id="fullName" aria-describedby="fullName">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Your Email</label>
+        <input type="email" name="email" class="form-control" id="email" aria-describedby="email">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Create a Password</label>
+        <input type="password" name="password" class="form-control" id="password">
+      </div>
+      <button type="submit" class="btn btn-success">Join Us Now</button>
+    </form>  
+  </div>
+  <%- include("partials/scripts.ejs") %>
+</body>
+</html>
