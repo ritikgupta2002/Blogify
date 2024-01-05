@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/user.js");
-const { checkForAuthenticationCookie } = require("./middlewares/authentication.js");
+const blogRoute = require("./routes/blog.js");
+const {
+  checkForAuthenticationCookie,
+} = require("./middlewares/authentication.js");
 const app = express();
 const port = 8000;
 
@@ -17,11 +20,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 app.get("/", (req, res) => {
-  res.render("home",{
-    user:req.user
+  res.render("home", {
+    user: req.user,
   });
 });
 app.use("/user", userRoute);
+app.use("/blog", blogRoute);
 
 app.listen(port, () => {
   console.log("server is running on port", port);
