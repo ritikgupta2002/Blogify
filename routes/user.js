@@ -30,7 +30,7 @@ Router.post("/signin", async (req, res) => {
 });
 
 Router.get("/logout", async (req, res) => {
-  res.clearCookie("token").redirect("/");
+  res.clearCookie("token").redirect("signin");
 });
 
 module.exports = Router;

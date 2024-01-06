@@ -1,21 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("partials/head.ejs") %>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add new Blog</title>
-  </head>
-  <body>
-    <%- include("partials/nav.ejs") %>
-    <div class="container mt-3">
-      <form>
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" id="title" name="title" aria-describedby="title" />
-        </div>
-      </form>
-    </div>
-    <%- include("partials/scripts.ejs") %>
-  </body>
+<head>
+  <%- include("partials/head.ejs") %>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add New Blog</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="path/to/custom-styles.css">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light gray background color */
+      color: #343a40; /* Dark text color */
+    }
+    .container {
+      background-color: #ffffff; /* White container background color */
+      border-radius: 8px; /* Rounded corners for the container */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow for depth */
+      padding: 20px; /* Padding inside the container */
+    }
+    .form-control {
+      border: 1px solid #ced4da; /* Light gray border for form controls */
+    }
+    .btn-primary {
+      background-color: #8cc84b; /* Primary button color */
+      border: 1px solid #8cc84b; /* Primary button border color */
+    }
+    .btn-primary:hover {
+      background-color: #72a43b; /* Darker color on hover for primary button */
+      border: 1px solid #72a43b; /* Darker border color on hover for primary button */
+    }
+  </style>
+</head>
+<body>
+  <%- include("partials/nav.ejs") %>
+  <div class="container mt-3">
+    <form action="/blog" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="coverImage" class="form-label">Cover Image</label>
+        <input type="file" class="form-control" id="coverImage" name="coverImage" aria-describedby="coverImageHelp" />
+        <div id="coverImageHelp" class="form-text">Upload a captivating cover image for your blog.</div>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" />
+        <div id="titleHelp" class="form-text">Choose a catchy title for your blog post.</div>
+      </div>
+      <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <textarea class="form-control" id="body" name="body" rows="3" aria-describedby="bodyHelp"></textarea>
+        <div id="bodyHelp" class="form-text">Write your blog content here.</div>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  <%- include("partials/scripts.ejs") %>
+</body>
 </html>
