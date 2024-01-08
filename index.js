@@ -4,7 +4,6 @@ const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/user.js");
 const blogRoute = require("./routes/blog.js");
 const blog = require("./models/blog.js");
-const path=require("path");
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication.js");
@@ -18,10 +17,10 @@ mongoose
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
+app.use(express.static("public/"));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
-app.use(express.static(path.resolve("./public")));
 app.get("/", async (req, res) => {
   const allblogs = await blog.find({});
   res.render("home", {
