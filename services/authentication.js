@@ -5,8 +5,10 @@ function createTokenForUser(user){
     const payload={
         id:user._id,
         email:user.email,
+        fullName:user.fullName,
         role:user.role,
         profileIamgeUrl:user.profileImageUrl
+
     }
     const token=jwt.sign(payload,secret,{expiresIn:"5h"});
     return token;

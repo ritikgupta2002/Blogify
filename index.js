@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 app.get("/", async (req, res) => {
   const allblogs = await blog.find({});
+  // console.log(req.user);
   res.render("home", {
     user: req.user,
     blogs: allblogs,
