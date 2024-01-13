@@ -65,7 +65,7 @@
     </div>
 
     <div class="container mt-3" style="margin-bottom: 1rem" >
-      <h1>Comments</h1>
+      <h1>Comments (<%= comments.length %>)</h1>
       <% if (user) { %>
         <form action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
