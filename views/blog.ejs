@@ -81,21 +81,23 @@
       <% } %>
     </div>
 
+   <% if (comments.length>0) { %>
     <div class="container mt-3">
-     <% comments.forEach(comment => { %>
-      
-        <img
-        src="<%=blog.createdBy.profileImageUrl%>"
-        width="50px"
-        style="margin-right: 10px"
-      />
-      <p class="mt-1">
-        by <%=blog.createdBy.fullName %>
-      </p>     
-      <pre style="margin-top:0.5rem"><%= comment.content %></pre>
-      
-     <% }) %>
-    </div>
+      <% comments.forEach(comment => { %>
+       
+         <img
+         src="<%=blog.createdBy.profileImageUrl%>"
+         width="50px"
+         style="margin-right: 10px"
+       />
+       <p class="mt-1">
+         by <%=blog.createdBy.fullName %>
+       </p>     
+       <pre style="margin-top:0.5rem"><%= comment.content %></pre>
+       
+      <% }) %>
+     </div>
+   <% } %>
 
     <%- include("partials/scripts.ejs") %>
   </body>
