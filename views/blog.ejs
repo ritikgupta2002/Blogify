@@ -60,13 +60,13 @@
         style="margin-right: 10px"
       />
       <p class="mt-2">
-        by <%=blog.createdBy.fullName %>
+        post by <%=blog.createdBy.fullName %>
       </p>      
     </div>
 
-    <div class="container mt-3">
+    <div class="container mt-3" style="margin-bottom: 1rem" >
       <h1>Comments</h1>
-      <% if (locals.user) { %>
+      <% if (user) { %>
         <form action="/blog/comment/<%= blog._id %>" method="post">
           <div class="mb-3">
             <input
@@ -79,6 +79,22 @@
           <button type="submit" class="btn btn-success">Add</button>
         </form>
       <% } %>
+    </div>
+
+    <div class="container mt-3">
+     <% comments.forEach(comment => { %>
+      
+        <img
+        src="<%=blog.createdBy.profileImageUrl%>"
+        width="50px"
+        style="margin-right: 10px"
+      />
+      <p class="mt-1">
+        by <%=blog.createdBy.fullName %>
+      </p>     
+      <pre style="margin-top:0.5rem"><%= comment.content %></pre>
+      
+     <% }) %>
     </div>
 
     <%- include("partials/scripts.ejs") %>
